@@ -1,0 +1,4 @@
+#let's ignore the compiled files
+*.o
+*.d
+*.img
