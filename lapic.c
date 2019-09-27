@@ -54,6 +54,10 @@ lapicw(int index, int value)
 void
 lapicinit(void)
 {
+  lapicw(TDCR, X1);
+  lapicw(TIMER, PERIODIC | (T_IRQ0 + IRQ_TIMER));
+  lapicw(TICR, 10000000);
+
   if(!lapic)
     return;
 

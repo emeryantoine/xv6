@@ -54,8 +54,10 @@ trap(struct trapframe *tf)
       wakeup(&ticks);
       release(&tickslock);
     }
-    cprintf("Tick on cpu %d !!! Your kernel is now alive !!!\n", mycpu()->apicid);
+    //cprintf("Tick on cpu %d !!! Your kernel is now alive !!!\n", mycpu()->apicid);
     lapiceoi();
+    if(myproc())
+      yield();
     break;
   case T_IRQ0 + IRQ_IDE:
     ideintr();
